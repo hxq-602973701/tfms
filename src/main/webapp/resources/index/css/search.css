@@ -1,0 +1,145 @@
+#main-wrap, .dotted-line {
+	margin: 0 auto;
+	padding: 0px;
+}
+#main-wrap {
+	width: 1025px;
+	height: auto;
+	font-family: '宋体';
+}
+.mainbox {
+	height: auto;
+	width: 100%;
+	float: left;
+}
+.col-sub {
+	width: 233px;
+	height: auto;
+}
+.main-local {
+	background: #FFF;
+	line-height: 20px;
+	float: left;
+	border: 1px solid #eee;
+	padding: 8px 15px;
+	width: 918px;
+	margin-top: 10px;
+}
+.main-local hr {
+	width: 730px;
+	margin-top: 20px;
+	color: #e6e6e6;
+	margin-left: 10px;
+}
+.list {
+	height: auto;
+ *float:left;
+}
+.list a:link {
+	color: #666666;
+	text-decoration: none;
+}
+.list span b {
+	color: #999999;
+	font-weight: normal;
+}
+.list a:active {
+	color: #ef8317;
+}
+.list li a span {
+	line-height: 21px;
+	margin-right: 13px;
+	white-space: nowrap;
+	display: inline-block;
+	color: #9a9999;
+}
+.list a:hover span, .list a:hover {
+	color: #ffffff;
+}
+.list_nav {
+/*padding-left: 50px;
+	position: relative;
+    float: left;*/
+}
+.list_nav .list li {
+	margin: 4px 20px 4px 0;
+	vertical-align: top;
+	display: inline-block;
+	float: left;
+	word-break: keep-all;
+	text-align: center;
+}
+.list_nav .list li a {
+	display: inline-block;
+	float: left;
+	/*	height: 19px;*/
+	padding: 0 4px;
+	text-align: center;
+	cursor: pointer;
+}
+.list_nav .list li a:hover {
+	background-color: #FF7E00;
+	border-radius: 2px 2px 2px 2px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.list_nav .list li.current a {
+	background-color: #FF7E00;
+	border-radius: 2px 2px 2px 2px;
+	color: #FFFFFF;
+	text-align: center;
+}
+.list_nav .list li.current a span {
+	color: #FFFFFF;
+}
+.tit {
+	text-align: left;
+	width: 50px;
+	font-size: 12px;
+	color: #333;
+	line-height: 30px;
+	/*	position: absolute;*/
+	float: left;
+}
+.main-local .list_nav i {
+	background: url(img/top-header-new.png) no-repeat;
+	height: 18px;
+	width: 14px;
+	display: block;
+	float: left;
+	margin: 4px 5px 0 0;
+}
+.main-local .list_nav i.hot-tit {
+	background-position: -115px -58px;
+}
+.main-local .list_nav i.go-tit {
+	background-position: -131px -58px;
+}
+.main-local .list_nav i.class-tit {
+	background-position: -98px -58px;
+}
+.main-local .list_nav i.price-tit {
+	background-position: -82px -58px;
+}
+.dotted-line {
+	width: 100%;
+	border-top: 1px dotted #E4E4E4;
+	margin: 3px 0;
+	float: left;
+	height: 2px;
+	overflow: hidden;
+}
+.main-local .list_navtab {
+	background: #F7F7F7;
+	float: right;
+	border: 1px dashed #cdcbcb;
+	margin: 5px 0 8px;
+	padding: 5px 10px;
+	width: 865px;
+}
+.main-local .list_nav i.class-tit {
+	background-position: -98px -58px;
+}
+.main-local .list_nav i.price-tit {
+	background-position: -82px -58px;
+}

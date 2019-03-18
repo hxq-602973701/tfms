@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+       	<!-- 数据库方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <!-- Enable Hibernate's automatic session context management
+        <property name="current_session_context_class">thread</property> -->
+         <!-- 二级缓存相关 
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property> -->
+        <!-- 显示sql语句 -->
+        <property name="show_sql">true</property>
+        <!-- 自动创建数据库 -->
+        <property name="hbm2ddl.auto">update</property>
+		<!-- 映射文件
+        <mapping resource="com/explorer/tfms/domain/FoodType.hbm.xml"/> -->
+    </session-factory>
+</hibernate-configuration>

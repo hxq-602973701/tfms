@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				http://www.springframework.org/schema/context
+				http://www.springframework.org/schema/context/spring-context-4.0.xsd
+				http://www.springframework.org/schema/aop
+				http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+				http://www.springframework.org/schema/tx
+				http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		
+	<!-- 自动扫描装配bean -->
+	<context:component-scan base-package="com.explorer.tfms"/>
+	
+	<bean id="ftlpath" class="java.lang.String">
+		<constructor-arg value="/ftl"/>
+	</bean>
+	
+	<bean id="outpath" class="java.lang.String">
+		<constructor-arg value="/jsp/template"/>
+	</bean>
+	
+	
+	<!-- 引入prperties配置文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+            <list>
+                <value>classpath*:jdbc.properties</value>  
+            </list>
+        </property>
+	</bean>
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">  
+        <!-- 基本属性 url、user、password --> 
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}"/>  
+        <property name="username" value="${jdbc.username}"/>  
+        <property name="password" value="${jdbc.password}"/>
+        
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${alibaba.initialSize}"/>  
+        <property name="minIdle" value="${alibaba.minIdle}"/>  
+        <property name="maxActive" value="${alibaba.maxActive}"/> 
+  
+        <!-- 配置获取连接等待超时的时间 --> 
+        <property name="maxWait" value="${alibaba.maxWait}"/> 
+  
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒--> 
+        <property name="timeBetweenEvictionRunsMillis" value="${alibaba.timeBetweenEvictionRunsMillis}"/> 
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${alibaba.minEvictableIdleTimeMillis}"/> 
+  		<!-- 关闭长时间不使用的连接超时时间，单位秒--> 
+  		<property name="removeAbandonedTimeout" value="${alibaba.removeAbandonedTimeout}"></property>
+  		
+        <property name="validationQuery" value="SELECT 'x'"/>  
+        <property name="testWhileIdle" value="true"/>  
+        <property name="testOnBorrow" value="false"/>  
+        <property name="testOnReturn" value="false"/>
+  
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小  -->
+        <property name="poolPreparedStatements" value="false"/>  
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="${alibaba.maxPoolPreparedStatementPerConnectionSize}"/>
+  
+        <!-- 配置监控统计拦截的filters -->
+        <property name="filters" value="stat"/>
+    </bean>
+    
+    <!-- 配置sessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource"/>
+    	<property name="configLocation">
+    		<value>classpath:hibernate.cfg.xml</value>
+    	</property>
+    	<!-- 基于model对象注解的配置 -->
+    	<property name="packagesToScan" value="com.explorer.tfms.domain"></property>
+    </bean>
+    
+    <!-- 配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    	<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    
+    <!-- 在service层注入事务（AOP编程） -->
+    <!-- 定义代码块通知 -->
+   	<tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!-- 对insert,update,delete 开头的方法进行事务管理,只要有异常就回滚 -->
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+            <tx:method name="execute*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+            <!-- select,count开头的方法,开启只读,提高数据库访问性能 -->
+            <tx:method name="list*" read-only="true"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="load*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="count*" read-only="true"/>
+            <!-- 对其他方法 使用默认的事务管理 -->
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <aop:config>
+    	<!-- 定义切点 -->
+    	<aop:pointcut expression="execution(* com.explorer.tfms.service..*(..))" id="txPoint"/>
+    	<!-- 注入通知 -->
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
+    </aop:config>
+    
+    <aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint"
+				expression="execution(* com.explorer.tfms.service.impl.ShopLabelServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.ShopLabelServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.ShopLabelServiceImpl.update*(..))"/>
+			<aop:after method="genShopLabel" pointcut-ref="myPoint"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint1"
+				expression="execution(* com.explorer.tfms.service.impl.ShopServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.ShopServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.ShopServiceImpl.update*(..))||
+						    execution(* com.explorer.tfms.service.impl.ShopServiceImpl.rest*(..))"/>
+			<aop:after method="genShop" pointcut-ref="myPoint1"/>
+		</aop:aspect>
+	</aop:config>
+    
+    <aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint2"
+				expression="execution(* com.explorer.tfms.service.impl.ShopServiceImpl.recommondShop(..))||
+				execution(* com.explorer.tfms.service.impl.ShopServiceImpl.update*(..))"/>
+			<aop:after method="genRecommendShop" pointcut-ref="myPoint2"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint3"
+				expression="execution(* com.explorer.tfms.service.impl.FoodServiceImpl.recommond*(..))||
+							execution(* com.explorer.tfms.service.impl.FoodServiceImpl.update*(..))"/>
+			<aop:after method="genRecommendFood" pointcut-ref="myPoint3"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint4"
+				expression="execution(* com.explorer.tfms.service.impl.FoodTypeServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.FoodTypeServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.FoodTypeServiceImpl.update*(..))"/>
+			<aop:after method="genFoodType" pointcut-ref="myPoint4"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint5"
+				expression="execution(* com.explorer.tfms.service.impl.NoticeServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.NoticeServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.NoticeServiceImpl.update*(..))"/>
+			<aop:after method="genNotice" pointcut-ref="myPoint5"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint6"
+				expression="execution(* com.explorer.tfms.service.impl.ChannelServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.ChannelServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.ChannelServiceImpl.update*(..))"/>
+			<aop:after method="genModel" pointcut-ref="myPoint6"/>
+		</aop:aspect>
+	</aop:config>
+	
+	<aop:config>
+		<aop:aspect ref="indexService">
+			<!--定义切入点，在执行下面切点时，激发动态代理，目标方法-->
+			<aop:pointcut id="myPoint7"
+				expression="execution(* com.explorer.tfms.service.impl.ActivityServiceImpl.save*(..))||
+							execution(* com.explorer.tfms.service.impl.ActivityServiceImpl.delete*(..))||
+						    execution(* com.explorer.tfms.service.impl.ActivityServiceImpl.update*(..))"/>
+			<aop:after method="genActivityImage" pointcut-ref="myPoint7"/>
+		</aop:aspect>
+	</aop:config>
+    
+    <!-- 事务注解配置注解用的 
+	<tx:annotation-driven transaction-manager="txManager"/>-->
+	<import resource="spring-kaptcha.xml"/>
+</beans>

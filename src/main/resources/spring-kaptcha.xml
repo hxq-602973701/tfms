@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="kaptchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					 <props>
+                        <prop key="kaptcha.image.width">250</prop>
+                        <prop key="kaptcha.image.height">90</prop>
+                        <prop key="kaptcha.border">no</prop>
+                        <prop key="kaptcha.noise.color">0,0,0</prop>
+                        <prop key="kaptcha.textproducer.font.color">0,0,0</prop>
+                        <prop key="kaptcha.textproducer.font.size">72</prop>
+                        <prop key="kaptcha.textproducer.char.space">4</prop>
+                        <prop key="kaptcha.textproducer.char.length">4</prop>
+                        <prop key="kaptcha.background.clear.from">200,200,200</prop>
+                        <prop key="kaptcha.background.clear.to">200,200,200</prop>
+                        <prop key="kaptcha.textproducer.char.string">
+                            34678abcdefghjklmnprtuvwxyzABCDEFGHJKLMNPQRTUVWXY
+                        </prop>
+                        <prop key="kaptcha.obscurificator.impl">
+                            com.google.code.kaptcha.impl.ShadowGimpy
+                        </prop>
+                        <prop key="kaptcha.textproducer.impl">
+                            com.google.code.kaptcha.text.impl.DefaultTextCreator
+                        </prop>
+                        <prop key="kaptcha.background.impl">
+                            com.google.code.kaptcha.impl.DefaultBackground
+                        </prop>
+                        <!--
+                        <prop key="kaptcha.textproducer.font.names">
+                           	 宋体,楷体,黑体,微软雅黑
+                        </prop>
+                        -->
+                    </props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+</beans>

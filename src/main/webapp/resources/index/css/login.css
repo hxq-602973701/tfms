@@ -1,0 +1,386 @@
+﻿/*登陆注册页面*/
+.login_page, .register_page {
+	width: 368px;
+	float: right;
+	margin: 30px auto 50px;
+	background: #FFF;/* border:1px solid #eee;*/
+	padding: 10px 35px;
+}
+.page_hd {
+	height: 50px;
+	line-height: 50px;
+	float: left;
+}
+.page_hd h2 {
+	font-size: 20px;
+	color: #565656;
+	font-family: '微软雅黑';
+	float: left;
+}
+.page_hd h2 span {
+	font-family: Verdana, Geneva, sans-serif;
+	color: #adadad;
+	font-size: 16px;
+}
+.login_page form {
+	float: none;
+}
+.btn_r {
+	float: right;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 10px;
+	width: 100%;
+	text-align: left;
+}
+.btn_r .btn_com, .btn_r .btn_com:hover {
+	background: url(img/nav_sp.gif) no-repeat -66px 0;
+	display: block;
+	width: 66px;
+	height: 30px;
+	float: left;
+	margin-left: 10px;
+}
+.btn_r .btn_com:hover {
+	background-position: -66px -33px;
+}
+.login_bd dt, .register_bd dt {
+	display: none;
+}
+.login_bd dd, .register_bd dd {
+	float: left;
+}
+.login_bd dd.box_err {
+	width: 368px;
+}
+.register_bd dl {
+	margin-bottom: 5px;
+	float: left;
+}
+.login_bd dd span.ipt01, .ipt02, .ipt03, .ipt04, .ipt05, .ipt06, .ipt07, .ipt08 {
+	background: url(img/loginbg.jpg) no-repeat 0 0;
+	height: 50px;
+	display: block;
+	float: left;
+	padding: 0 17px 0 50px;
+}
+.ipt09, .ipt10 {
+	background: url(img/loginbg.jpg) no-repeat 0 0;
+	height: 50px;
+	display: block;
+	float: left;
+}
+.login_bd dd.submit {
+	margin-top: 10px;
+}
+.ipt02 {
+	background-position: 0 -50px;
+}
+.ipt03 {
+	background-position: 0 -186px;
+}
+.ipt04 {
+	background-position: 0 -243px;
+}
+.ipt05 {
+	background-position: 0 -300px;
+}
+.ipt06 {
+	background-position: 0 -357px;
+}
+.ipt07 {
+	background-position: 0 -414px;
+}
+.ipt08 {
+	background-position: 0 -471px;
+}
+.ipt09 {
+	background-position: 0 -414px;
+	cursor: pointer;
+	height: 50px;
+	position: relative;
+	width: 185px;
+}
+.ipt09 span {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 14px;
+	padding-left: 15px;
+}
+.ipt10 span {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	font-size: 14px;
+	padding-left: 15px;
+}
+.ipt10 {
+	background-position: 0 -528px;
+	cursor: pointer;
+	height: 50px;
+	position: relative;
+	width: 178px;
+}
+.city_down {
+	border-color: #000000 transparent transparent;
+	border-style: solid dashed dashed;
+	border-width: 4px;
+	font-size: 0;
+	height: 0;
+	line-height: 0;
+	position: absolute;
+	right: 20px;
+	top: 23px;
+	transition: all 0.2s ease-in 0s;
+	width: 0;
+}
+.mr9 {
+	margin-right: 9px;
+}
+.slt_body, .slt_star {
+	width: 176px;
+	overflow-y: auto;
+	height: 200px;
+}
+.slt_wrap {
+	background-color: #FFFFFF;
+	border: 1px solid #e4e4e4;
+}
+.slt_box {
+	position: absolute;
+	z-index: 300;
+}
+.slt_wrap .slt_list ul {
+	padding: 5px 0;
+}
+.slt_wrap .slt_list li {
+	cursor: pointer;
+	padding: 3px 6px;
+	line-height: 25px;
+}
+.slt_list .cur, .slt_list li:hover {
+	background: #F4F4F4;
+}
+.in_b input {
+	background-color: #FFFFFF;
+	font-size: 14px;
+	margin: 5px;
+	border: 1px solid #fff;
+	font-family: Tahoma;
+	height: 35px;
+	line-height: 35px;
+	width: 300px;
+	color: #999;
+}
+.in_b strong.current-value {
+	background-color: #FFFFFF;
+	font-size: 14px;
+	margin: 5px;
+	border: 1px solid #fff;
+	font-family: Tahoma;
+	height: 35px;
+	line-height: 35px;
+	width: 300px;
+	color: #999;
+	float: left;
+}
+/*input:focus, textarea:focus {
+	border: none;
+}*/
+.login_bd dd.find {
+	margin: 10px 0 15px;
+}
+.login_bd dd.find input {
+	vertical-align: -2px;
+}
+.btn-regist, .btn-regist:hover {
+	background: url(img/loginbg.jpg) no-repeat 0 -100px;
+	border: 0 none;
+	font-family: '微软雅黑';
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 18px;
+	height: 40px;
+	line-height: 38px;
+	text-align: center;
+	width: 368px;
+}
+.btn-regist:hover {
+	background-position: 0 -141px;
+}
+.btn_r a.fw {
+	margin-left: 20px;
+	color: #12bbf6;
+	float: right;
+}
+.btn_r a.fw:hover {
+	text-decoration: underline;
+}
+.btn_r span {
+	float: left;
+}
+.left_pic {
+	background-color: #FFFFFF;
+	float: left;
+	height: 450px;
+	width: 450px;
+	margin-top: 35px
+}
+.register_bd .error_info {
+	float: left;
+	color: #ff513c;
+	margin-top: 5px;
+	display: block;
+	width: 100%;
+	line-height: 25px;
+	height: 25px;
+	padding-left: 25px;
+	font-size: 14px;
+	background-position: -67px -163px;
+}
+.error_login .error {
+	float: left;
+	color: #ff513c;
+	margin-top: 5px;
+	display: block;
+	width: 100%;
+	line-height: 25px;
+	height: 25px;
+	padding-left: 25px;
+	font-size: 14px;
+	background-position: -67px -163px;
+}
+.register_bd .ment input {
+	margin-right: 3px;
+	vertical-align: -2px;
+}
+.register_bd .ment a {
+	margin-left: 3px;
+	color: #ff513c;
+}
+.register_bd .ment {
+	margin: 10px 0 15px;
+	width: 368px;
+}
+.quick-login dd.box_err_q .error_reg{float: left; text-align:left;}
+.error_reg {
+	background: url(img/nav_sp.gif) no-repeat;
+	float: left;
+	color: #ff513c;
+	margin-top: 5px;
+	display: block;
+	width: 100%;
+	line-height: 25px;
+	height: 25px;
+	padding-left: 25px;
+	font-size: 14px;
+	background-position: -67px -163px;
+}
+.yzm {
+	float: left;
+	margin-left: 5px;
+	margin-top: 2px;
+	width: 100px;
+}
+.yzm img {
+	float: left;
+}
+.yzm a {
+	float: left;
+	color: #888888;
+	text-decoration: underline;
+	margin: 5px 0 0 5px;
+	line-height: 18px;
+}
+.yzm a:hover {
+	color: #ff513c;
+}
+.yzm #sendcode{
+    padding:5px; width:150px; height:47px;
+    background:#FC4243; 
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+	border:none;
+	font-size:14px;
+	color:#fff;
+}
+
+
+.cpl_title {
+	bottom: 10px;
+	height: 45px;
+	left: 10px;
+	position: absolute;
+	text-align: center;
+	width: 160px;
+}
+.cpl_title .o {
+	/*background: url(img/default/cpl_line.png) no-repeat 5px 32px rgba(255,255,255,1);*/
+ filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#7FFFFFFF', endColorstr='#7FFFFFFF');
+background-color:;
+	height: 45px;
+	left: 0;
+	opacity: 0.9;
+	position: absolute;
+	top: 0;
+	width: 160px;
+	z-index: 1;
+}
+.cpl_title .t, .cpl_title .s {
+	display: block;
+	position: relative;
+	z-index: 9;
+}
+.cpl_title .t {
+	color: #000;
+	font-size: 16px;
+	font-weight: bolder;
+	line-height: 16px;
+	margin-top: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.cpl_title .s {
+	color: #000;
+	font-size: 12px;
+	line-height: 12px;
+	margin-top: 5px;
+}
+.xd-login-other {
+	border-top: dashed 1px #D8D8D8;
+	padding: 10px 0px 20px 0;
+	float: right;
+	width: 368px;
+	margin-top: 15px;
+}
+.xd-login-other p {
+	line-height: 25px;
+	color: #777;
+	float: left;
+}
+.xd-login-other a {
+	text-decoration: none;
+	display: inline-block;
+	float: left;
+	/*background: url(img/default/login.png) no-repeat scroll;*/
+	margin-right: 10px;
+	vertical-align: middle;
+	height: 28px;
+}
+.xd-login-other a.qq {
+	background-position: -88px 0px;
+	width: 78px;
+}
+.xd-login-other a:hover.qq {
+	background-position: -88px -28px;
+}
+.xd-login-other a.sina {
+	background-position: -166px 0px;
+	width: 88px;
+}
+.xd-login-other a:hover.sina {
+	background-position: -166px -28px;
+}

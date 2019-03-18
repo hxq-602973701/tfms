@@ -1,0 +1,336 @@
+﻿@charset "utf-8";
+
+#sideTools {
+    position: fixed;
+    top: 260px;
+    right: 3px;
+    width: 61px; /*overflow:hidden;*/
+    z-index: 999;
+    _width: 61px;
+    _right: 30px;
+    _position: absolute;
+    _position: absolute;
+    _margin-top: 0;
+    _top: expression(documentElement.scrollTop+550)
+}
+#sideTools1 {
+    position: fixed;
+    top: 100px;
+    right: 83px;
+    width: 61px; /*overflow:hidden;*/
+    z-index: 1007;
+    _width: 61px;
+    _right: 30px;
+    _position: absolute;
+    _position: absolute;
+    _margin-top: 0;
+    _top: expression(documentElement.scrollTop+550)
+    padding-bottom:10px;
+}
+#sideTools .tcz-wximg {
+    top: -3px;
+    left: -130px;
+    position: absolute;
+    background: url(img/footer20131223.png) no-repeat 0px -472px;
+    width: 130px;
+    height: 130px;
+}
+
+#sideTools p {
+    margin-top: 5px;
+    background: url(img/right201308.png);
+}
+
+#sideTools p a {
+    display: block;
+    width: 61px;
+    height: 61px;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+#sideTools p a:hover {
+    text-decoration: none;
+}
+
+#sideTools p a:active {
+}
+
+#sideTools p a s {
+    display: inline-block;
+    float: left;
+    width: 34px;
+    height: 36px;
+    background: url(img/bg630.png) 0 -340px;
+    vertical-align: middle;
+}
+
+#sideTools p a span {
+    display: inline-block;
+    float: left;
+    width: 50px;
+    height: 36px;
+    color: #FFF;
+    line-height: 36px;
+    overflow: hidden;
+}
+
+#sideTools p.miniNav a s {
+    background-position: 0 -340px;
+}
+
+#sideTools p.miniNav a.on {
+    background: #676767;
+}
+
+#sideTools p.miniNav a:hover s {
+    background-position: -160px -340px;
+}
+
+#sideTools p.miniNav a.on s {
+    background-position: -160px -340px;
+}
+
+#sideTools p.iRpt a s {
+    background-position: 0px 0px;
+}
+
+#sideTools p.iRpt a:hover s {
+    background-position: -200px -340px;
+}
+
+#sideTools p.iOnline {
+    background-position: 0px -73px;
+}
+
+#sideTools p.iOnline a:hover s {
+    background-position: -240px -340px;
+}
+
+#sideTools p.i1nline a s {
+    background-position: 0px -277px;
+}
+
+#sideTools p.i1nline a:hover s {
+    background-position: -40px -277px;
+}
+
+#sideTools p.iToTop {
+    background-position: 0px -148px;
+    display: none
+}
+
+#sideTools p.iToTop a:hover s {
+    background-position: -280px -340px;
+}
+
+#sideTools p.iToTop a span {
+    text-align: center;
+}
+
+#sideTools .stMore {
+    width: 86px;
+    height: 180px;
+    background: #676767;
+    border-top: 1px solid #585858;
+    overflow: hidden;
+}
+
+#sideTools .stMore dl {
+    padding-bottom: 8px;
+}
+
+#sideTools .stMore dl dt {
+    height: 10px;
+    font-weight: bold;
+    color: #FD741C;
+    line-height: 30px;
+}
+
+#sideTools .stMore dl dt s {
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+    margin: 0 2px 0 10px;
+    background: url(img/bg630.png) -320px -300px;
+    vertical-align: middle;
+}
+
+#sideTools .stMore dl.side01 {
+    border-top: 1px solid #7E7E7E;
+}
+
+#sideTools .stMore dl.side02 dt {
+    color: #86BE15;
+}
+
+#sideTools .stMore dl.side02 dt s {
+    background-position: -320px -320px;
+}
+
+#sideTools .stMore dl.side03 {
+    border-bottom: 1px solid #585858;
+}
+
+#sideTools .stMore dl.side03 dt {
+    color: #ED4882;
+}
+
+#sideTools .stMore dl.side03 dt s {
+    background-position: -320px -340px;
+}
+
+#sideTools .stMore dl dd {
+    margin-left: 25px;
+}
+
+#sideTools .stMore dl dd a {
+    display: block;
+    margin-bottom: 10px;
+    color: #FFF;
+}
+
+#sideTools .stMoreClose {
+    display: block;
+    width: 86px;
+    height: 16px;
+    background: #676767;
+}
+
+#sideTools .stMoreClose a {
+    display: block;
+    width: 86px;
+    height: 14px;
+    border-top: 1px solid #7E7E7E;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#sideTools .stMoreClose a i {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-left: 36px;
+    background: url(img/bg630.png) -320px -360px;
+}
+
+#sideTools p.weixin2 {
+    background: url(img/footer20131223.png) no-repeat -139px 0px;
+}
+
+
+/*在线客服开始*/
+#online_service_bar {
+    font-size:12px;
+    color:#555;
+    font-family:"Microsoft YaHei", Verdana, "BitStream vera Sans", Tahoma, Helvetica, Sans-serif;
+}
+#online_service_bar a {
+    color:#555;
+    text-decoration: none;
+}
+#online_service_bar a:hover {
+    color:#E21F2B;
+    text-decoration: none;
+}
+#online_service_bar img {
+    border:none;
+    vertical-align: middle;
+}
+#online_service_bar dl, #online_service_bar dd, #online_service_bar ul, #online_service_bar li {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+/*在线客服边栏*/
+#online_service_bar {
+    position:absolute;
+    top:-150px;
+    right:0;
+    overflow:hidden;
+    z-index:1001;
+}
+#sideTools1 {
+    width:138px;
+    padding-bottom:10px;
+    background:url(img/footer.gif) no-repeat left bottom;
+}
+.service_bar_head {
+    text-indent: -9999px;
+    width:138px;
+    height:58px;
+    position:relative;
+    background:url(img/header.gif) no-repeat left top;
+}
+.service_bar_main {
+    width:106px;
+    padding:5px 12px;
+    background:url(img/main.gif) repeat-y left top;
+}
+#service_bar_close {
+    position:absolute;
+    width:35px;
+    height:35px;
+    top:0;
+    right:0;
+    cursor:pointer;
+    display:block;
+    text-indent: -9999px;
+}
+/*在线客服边栏收缩状态*/
+#online_service_minibar {
+    margin-top:150px;
+    width:23px;
+    height:80px;
+    background:url(img/mini.gif) no-repeat right top;
+    display:none;
+    cursor: pointer;
+}
+/*客服菜单列表*/
+.service_menu {
+    font-size:12px;
+    width:106px;
+    overflow:hidden;
+}
+.service_menu li {
+    width:106px;
+    display:inline;
+    overflow:hidden;
+}
+.service_menu li dt {
+    text-align:left;
+    margin-bottom:5px;
+    padding:8px 10px 6px 10px;
+    *padding:9px 10px 5px 10px;
+    background:url(img/menu.gif) no-repeat top center;
+    cursor: pointer;
+}
+.service_menu li dd {
+    display:none;
+    text-align:center;
+}
+.service_menu li dd a img {
+    margin-bottom:5px;
+}
+.service_menu li.hover dt {
+    color:#E21F2B;
+}
+.service_menu li.hover dd {
+    padding:5px 0;
+    line-height:20px;
+}
+.qq_btn {
+    display:block;
+    padding:4px;
+}
+.service_tel {
+    font-size:12px;
+    font-family:"Microsoft YaHei", Verdana, "BitStream vera Sans", Tahoma, Helvetica, Sans-serif;
+    padding-left:22px;
+    height:28px;
+    line-height:28px;
+    background:url(img/tel.png) no-repeat 5px center;
+}
+/*在线客服结束*/
